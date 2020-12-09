@@ -1,0 +1,16 @@
+mouse modes:
+- default/select mode
+    - click on weapon: nothing
+    - click on weapon: target mode
+    - click on crewmate: command mode
+    - click on systems tray: manipulate system power
+- target mode
+    - click on room: assign the room as weapon's target
+    - click on crewmate: nothing
+    - click on weapon: target mode for that weapon
+    - click on systems tray: manipulate system power
+- command mode
+    - click on room: send selected crewmate to room
+    - click on weapon: target mode
+    - click on crewmate: command mode for that crewmate
+    - click on systems tray: manipulate system power

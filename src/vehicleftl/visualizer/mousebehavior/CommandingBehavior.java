@@ -13,6 +13,7 @@ public class CommandingBehavior extends ObservableBehavior {
   private Crewmate myCrewmate;
   private CrewVisualizer myVisualizer;
 
+  //This is about to change.
   public CommandingBehavior(Crewmate crewmate, CrewVisualizer visualizer) {
     myCrewmate = crewmate;
     myVisualizer = visualizer;

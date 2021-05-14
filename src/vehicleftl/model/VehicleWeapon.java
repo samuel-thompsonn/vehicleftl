@@ -2,6 +2,7 @@ package vehicleftl.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class VehicleWeapon implements Weapon {
   private PowerSource mySource;
@@ -12,8 +13,10 @@ public class VehicleWeapon implements Weapon {
   private double myCurrentCharge;
   private Room myTarget;
   private List<WeaponListener> myListeners;
+  private String myID;
 
   public VehicleWeapon(int damage, int level, double chargeTime, PowerSource source) {
+    myID = "Weapon" + new Random().nextInt(10000);
     mySource = source;
     myDamage = damage;
     myLevel = level;
@@ -79,5 +82,10 @@ public class VehicleWeapon implements Weapon {
     myListeners.add(listener);
     listener.reactToPowerChange((isPowered)? myLevel : 0, myLevel);
     listener.reactToCharge(myCurrentCharge,myChargeTime);
+  }
+
+  @Override
+  public String getID() {
+    return myID;
   }
 }

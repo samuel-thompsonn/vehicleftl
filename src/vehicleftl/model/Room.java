@@ -20,4 +20,6 @@ public interface Room extends PathRoom {
   public int getHeight();
 
   public int getWidth();
+
+  public String getID();
 }

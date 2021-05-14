@@ -4,17 +4,20 @@ import vehicleftl.model.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public abstract class VehicleSystem implements ShipSystem, RoomListener {
 
   private int myLevel;
   private int myDamage;
   private int myPower;
+  private String myID;
   private List<SystemListener> myListeners;
   private Room myRoom;
   private PowerSource mySource;
 
   public VehicleSystem(Room room, PowerSource source) {
+    myID = "System" + new Random().nextInt(10000);
     myListeners = new ArrayList<>();
     myLevel = room.getLevel();
     myPower = 0;
@@ -83,6 +86,11 @@ public abstract class VehicleSystem implements ShipSystem, RoomListener {
     myListeners.add(listener);
     listener.reactToDamageChange(myDamage);
     listener.reactToPowerChange(myPower);
+  }
+
+  @Override
+  public String getID() {
+    return myID;
   }
 
   @Override

@@ -18,4 +18,6 @@ public interface ShipSystem {
   public int getShieldLevel();
 
   public double getDodgeChance();
+
+  public String getID();
 }

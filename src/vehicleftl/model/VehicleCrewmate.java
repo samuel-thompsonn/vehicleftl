@@ -4,12 +4,16 @@ import vehicleftl.model.pathfinding.Person;
 import vehicleftl.model.pathfinding.PersonListener;
 import vehicleftl.model.pathfinding.Tile;
 
+import java.util.Random;
+
 public class VehicleCrewmate implements Crewmate {
 
   private Person myPathfindingPerson;
   private double myRepairSpeed;
+  private String myID;
 
   public VehicleCrewmate(Person person) {
+    myID = "Crewmate" + new Random().nextInt(10000);
     myPathfindingPerson = person;
     myRepairSpeed = 1.0;
   }
@@ -89,5 +93,10 @@ public class VehicleCrewmate implements Crewmate {
   @Override
   public boolean isMoving() {
     return myPathfindingPerson.isMoving();
+  }
+
+  @Override
+  public String getID() {
+    return myID;
   }
 }

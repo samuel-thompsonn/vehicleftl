@@ -14,4 +14,6 @@ public interface Weapon {
   public double getChargeTime();
 
   public void subscribe(WeaponListener listener);
+
+  public String getID();
 }

@@ -7,7 +7,9 @@ import vehicleftl.model.pathfinding.Tile;
 import vehicleftl.model.system.ShieldSystem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FtlVehicle implements Vehicle, PowerSource, PathModel {
 
@@ -198,4 +200,5 @@ public class FtlVehicle implements Vehicle, PowerSource, PathModel {
     myReactorListeners.add(listener);
     listener.reactToPowerChange(myPower);
   }
+
 }

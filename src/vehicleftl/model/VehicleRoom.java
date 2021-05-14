@@ -4,6 +4,7 @@ import vehicleftl.model.pathfinding.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class VehicleRoom implements Room, PathRoom, VehicleTileListener {
 
@@ -15,9 +16,11 @@ public class VehicleRoom implements Room, PathRoom, VehicleTileListener {
   private int myWidth;
   private int myHeight;
   private PathRoom myPathRoom;
+  private String myID;
 
   public VehicleRoom(int level, int width, int height, int x, int y) {
     myRepairProgress = 0;
+    myID = "Room" + new Random().nextInt(10000);
 
     Tile[][] tiles = new Tile[width][height];
     for (int i = 0; i < width; i ++) {
@@ -115,6 +118,11 @@ public class VehicleRoom implements Room, PathRoom, VehicleTileListener {
   @Override
   public int getWidth() {
     return 2;
+  }
+
+  @Override
+  public String getID() {
+    return myID;
   }
 
   @Override

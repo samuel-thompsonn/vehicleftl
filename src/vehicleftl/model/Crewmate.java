@@ -7,5 +7,5 @@ import vehicleftl.model.pathfinding.Person;
  * vehicles, like skills and combat abilities
  */
 public interface Crewmate extends Person {
-
+  public String getID();
 }

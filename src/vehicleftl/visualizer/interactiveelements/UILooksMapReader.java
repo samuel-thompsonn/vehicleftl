@@ -5,6 +5,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import vehicleftl.model.VehicleRoom;
+import vehicleftl.visualizer.interactiveelements.util.ReactionMap;
 import vehicleftl.visualizer.interactiveelements.util.ThreeKeyMap;
 import vehicleftl.visualizer.interactiveelements.util.TwoKeyMap;
 import vehicleftl.visualizer.interactiveelements.util.UserInputReaction;
@@ -23,7 +24,7 @@ public class UILooksMapReader {
   private static final String FILENAME = "src/vehicleftl/visualizer/interactiveelements/data/stateful_look.xml";
   private static final String NICKNAMES_PATH = "src/vehicleftl/visualizer/interactiveelements/data/methodnicknames/";
 
-  public ThreeKeyMap<String, String, String, Method> getLooksMap(InteractiveUIElement uiElement, String type) {
+  public ReactionMap getLooksMap(InteractiveUIElement uiElement, String type) {
     ThreeKeyMap<String, String, String, Method> looksMap = new ThreeKeyMap<>();
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     try {
@@ -46,7 +47,7 @@ public class UILooksMapReader {
     } catch (ParserConfigurationException | SAXException | IOException | NoSuchMethodException e) {
       e.printStackTrace();
     }
-    return looksMap;
+    return new ReactionMap(looksMap);
   }
 
   private Element findElementWithAttribute(NodeList nodeList, String attName, String attVal) {

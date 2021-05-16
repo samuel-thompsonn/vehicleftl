@@ -6,6 +6,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import vehicleftl.model.Room;
 import vehicleftl.visualizer.VehicleTileVisualizer;
+import vehicleftl.visualizer.interactiveelements.util.ReactionMap;
 import vehicleftl.visualizer.interactiveelements.util.ThreeKeyMap;
 import vehicleftl.visualizer.interactiveelements.util.UserInputReaction;
 
@@ -31,7 +32,7 @@ public class VehicleRoomVisualizer implements RoomVisualizer {
   private boolean selected;
   private Circle myTargetedIndicator;
   private Map<String, UserInputReaction> myLooksMap;
-  private ThreeKeyMap<String, String, String, Method> myReactions;
+  private ReactionMap myReactions;
 
   public VehicleRoomVisualizer(double xPos, double yPos, int width, int height, Room room) {
     initLooks();
@@ -165,11 +166,8 @@ public class VehicleRoomVisualizer implements RoomVisualizer {
 
   @Override
   public void reactToUserInput(String UIState, String inputType, String UITarget) {
-    String targeted = (myRoom.getID().equals(UITarget))? "True" : "False";
+    String targeted = (getID().equals(UITarget))? "True" : "False";
     Method reaction = myReactions.get(UIState, inputType, targeted);
-    if (reaction == null) {
-      reaction = myReactions.get("Default", "Any", "Any");
-    }
     try {
       reaction.invoke(this);
     } catch (IllegalAccessException | InvocationTargetException e) {

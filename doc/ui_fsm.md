@@ -6,7 +6,7 @@
 5. pause
 
 ##### states
-state 0: home
+state 0: select
 - click on charged weapon x: go to 1.x
 - click on crewmate x: switch to 2.x
 - click on power: execute 3
@@ -19,7 +19,7 @@ state 1.x: targeting with weapon x
 - click on enemy room: execute 1, switch to state 0
 - right click: switch to state 0
 
-state 2.x: crewmate x selected
+state 2.x: command crewmate x
 - click on weapon y: switch to targeting with weapon y
 - right click on room: execute 2
 - click on crewmate z: switch to 2.x

@@ -7,17 +7,11 @@ import javafx.scene.shape.Rectangle;
 import vehicleftl.model.Room;
 import vehicleftl.model.Weapon;
 import vehicleftl.model.WeaponListener;
-import vehicleftl.visualizer.interactiveelements.util.ReactionMap;
-import vehicleftl.visualizer.interactiveelements.util.ThreeKeyMap;
-import vehicleftl.visualizer.interactiveelements.util.TwoKeyMap;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehicleWeaponInterface extends ReactionMappedElement implements WeaponInterfaceVisualizer, WeaponListener {
-
+public abstract class StandardWeaponLook implements WeaponListener {
   public static final int DISPLAY_WIDTH_BASE = 100;
   public static final int DISPLAY_HEIGHT_BASE = 75;
   public static final double SCALE = 0.8;
@@ -28,7 +22,6 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
 
   private Group myGroup;
   private List<Rectangle> myPowerIndicators;
-  private List<Rectangle> myChargeIndicators;
   private Rectangle myChargeIndicator;
   private Rectangle myBorder;
   private double myX;
@@ -38,9 +31,8 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
   private Weapon myWeapon;
   private RoomVisualizer myTargetVis;
   private Circle myTargetCircle;
-  private boolean isPowered;
 
-  public VehicleWeaponInterface(Weapon weapon, double x, double y) {
+  public StandardWeaponLook(Weapon weapon, double x, double y) {
     super();
     myTargetVis = null;
     myGroup = new Group();
@@ -62,6 +54,8 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
     myTargetCircle.setStroke(Color.TRANSPARENT);
     myGroup.getChildren().add(myTargetCircle);
   }
+
+  public abstract void initBorder(Rectangle borderRect);
 
   private List<Rectangle> initPowerIndicators(int weaponPower) {
     List<Rectangle> returnedList = new ArrayList<>();
@@ -87,67 +81,14 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
     chargeContainer.setStroke(Color.BLACK);
     chargeContainer.setFill(Color.TRANSPARENT);
     myGroup.getChildren().add(chargeContainer);
-
-//    List<Rectangle> returnedList = new ArrayList<>();
-//    int numChargeCells = (int)Math.floor(maxCharge);
-//    double chargeCellHeight = (DISPLAY_HEIGHT - (CHARGE_BAR_WIDTH)) / numChargeCells;
-//    for (int i = 0; i < maxCharge; i ++) {
-//      Rectangle chargeCell = new Rectangle(myX + (0.5 * CHARGE_BAR_WIDTH), myY + (myHeight - (0.5*CHARGE_BAR_WIDTH)) - ((i+1) * chargeCellHeight),CHARGE_BAR_WIDTH,chargeCellHeight);
-//      chargeCell.setStroke(Color.BLACK);
-//      chargeCell.setFill(Color.TRANSPARENT);
-//      myGroup.getChildren().add(chargeCell);
-//      returnedList.add(chargeCell);
-//    }
-//    return returnedList;
   }
 
-  @Override
   public Group getGroup() {
     return myGroup;
   }
 
   @Override
-  public void setTarget(Room room, RoomVisualizer visualizer) {
-    myWeapon.setTarget(room);
-    myTargetVis = visualizer;
-    if (myTargetVis == null) {
-      myTargetCircle.setStroke(Color.TRANSPARENT);
-    }
-    else {
-      myTargetCircle.setStroke(Color.RED);
-      myTargetCircle.setCenterX(myTargetVis.getCenterX());
-      myTargetCircle.setCenterY(myTargetVis.getCenterY());
-    }
-  }
-
-  @Override
-  public boolean pointInBounds(double x, double y) {
-    return (x > myX && x < myX + myWidth && y > myY && y < myY + myHeight);
-  }
-
-  @Override
-  public void setSelected(boolean selected) {
-    myBorder.setStrokeWidth((selected)? 5 : 1);
-  }
-
-  @Override
-  public String getWeaponId() {
-    return myWeapon.getID();
-  }
-
-  @Override
-  public String getElementType() {
-    return "WeaponPanel";
-  }
-
-  @Override
-  public String getStateInfo() {
-    return (isPowered)? "Powered" : "Unpowered";
-  }
-
-  @Override
   public void reactToPowerChange(int newPower, int maxPower) {
-    isPowered = newPower == maxPower;
     for (int i = 0; i < myPowerIndicators.size(); i ++) {
       Rectangle powerIndicator = myPowerIndicators.get(i);
       if (i < newPower) {
@@ -159,30 +100,12 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
     }
   }
 
-//  private void initReactions() {
-//    myReactions = new UILooksMapReader().getLooksMap(this, getElementType());
-//  }
-
   @Override
   public void reactToCharge(double charge, double maxCharge) {
     double height = (charge/maxCharge) * (myHeight - CHARGE_BAR_WIDTH);
     double maxHeight = 1.0 * (myHeight - CHARGE_BAR_WIDTH);
     myChargeIndicator.setY(myY + (0.5 * CHARGE_BAR_WIDTH) + maxHeight - height);
     myChargeIndicator.setHeight(height);
-//    for (int i = 0; i < myChargeIndicators.size(); i ++) {
-//      Rectangle chargeBar = myChargeIndicators.get(i);
-//      if (i < charge) {
-//        chargeBar.setFill(Color.YELLOW);
-//      }
-//      else {
-//        chargeBar.setFill(Color.TRANSPARENT);
-//      }
-//    }
-  }
-
-  @Override
-  public String getID() {
-    return myWeapon.getID();
   }
 
   private void highlightUnpowered() {
@@ -201,23 +124,4 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
     myBorder.setFill(Color.color(0.7,0.5,0.0,0.5));
   }
 
-  @Override
-  protected void executeLook(Method m) {
-    try {
-      m.invoke(this);
-    } catch (IllegalAccessException | InvocationTargetException e) {
-      e.printStackTrace();
-    }
-  }
-
-  //  @Override
-//  public void reactToUserInput(String UIState, String inputType, String UITarget) {
-//    String targeted = (getID().equals(UITarget))? "True" : "False";
-//    Method reaction = myReactions.get(UIState, inputType, targeted);
-//    try {
-//      reaction.invoke(this);
-//    } catch (IllegalAccessException | InvocationTargetException e) {
-//      e.printStackTrace();
-//    }
-//  }
 }

@@ -6,7 +6,7 @@
         <Reaction state="Target" action="Hover" look="HighlightTarget"/>
         <Reaction state="Command" action="Hover" look="HighlightCommand"/>
     </States>
-    <States name="WeaponVisualizer">
+    <States name="WeaponPanel">
         <Nicknames file="weapon-nicknames.xml"/>
         <Reaction state="Default" action="Any" look="Normal"/>
         <Reaction state="Select" action="Hover" look="HighlightPowered"/>

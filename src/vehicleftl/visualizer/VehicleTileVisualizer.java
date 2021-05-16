@@ -3,6 +3,7 @@ package vehicleftl.visualizer;
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import vehicleftl.visualizer.interactiveelements.TileVisualizer;
 
 public class VehicleTileVisualizer implements TileVisualizer {
 

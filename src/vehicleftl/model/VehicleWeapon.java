@@ -27,7 +27,9 @@ public class VehicleWeapon implements Weapon {
 
   @Override
   public void setTarget(Room room) {
+    if (myTarget != null) { myTarget.setTargeted(false); }
     myTarget = room;
+    if (room != null) { room.setTargeted(true); }
   }
 
   @Override

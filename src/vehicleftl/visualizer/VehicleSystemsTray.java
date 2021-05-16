@@ -5,6 +5,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import vehicleftl.model.PowerSourceListener;
 import vehicleftl.model.Vehicle;
+import vehicleftl.visualizer.interactiveelements.SystemVisualizer;
+import vehicleftl.visualizer.interactiveelements.VehicleSystemVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;

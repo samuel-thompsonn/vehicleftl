@@ -1,4 +1,4 @@
-package vehicleftl.visualizer;
+package vehicleftl.visualizer.interactiveelements;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -6,9 +6,11 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import vehicleftl.model.ShipSystem;
 import vehicleftl.model.SystemListener;
+import vehicleftl.visualizer.interactiveelements.SystemVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 
 public class VehicleSystemVisualizer implements SystemVisualizer, SystemListener {
@@ -27,8 +29,10 @@ public class VehicleSystemVisualizer implements SystemVisualizer, SystemListener
   private double myY;
   private List<Rectangle> myPowerBars;
   private Circle myMannedIndicator;
+  private int myID;
 
   public VehicleSystemVisualizer(ShipSystem system, double x, double y) {
+    myID = new Random().nextInt(4000);
     myX = x;
     myY = y;
     mySystem = system;
@@ -54,8 +58,23 @@ public class VehicleSystemVisualizer implements SystemVisualizer, SystemListener
   }
 
   @Override
+  public String getElementType() {
+    return "System";
+  }
+
+  @Override
+  public String getStateInfo() {
+    return null;
+  }
+
+  @Override
   public void increasePower() {
     mySystem.setPower(mySystem.getPower()+1);
+  }
+
+  @Override
+  public String getID() {
+    return "System" + myID;
   }
 
   @Override

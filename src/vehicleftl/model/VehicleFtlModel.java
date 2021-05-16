@@ -33,7 +33,7 @@ public class VehicleFtlModel implements ModelExternal {
   public void targetWeaponToRoom(String weaponID, String roomID) {
     Weapon weapon = myWeaponIDs.get(weaponID);//This one makes no sense at all! I shouldn't target my own room!
     Room targetRoom = myRoomIDs.get(roomID);
-    if (weapon == null || targetRoom == null) {
+    if (weapon == null) {
       return;
     }
     weapon.setTarget(targetRoom);

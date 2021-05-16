@@ -6,6 +6,8 @@ import javafx.scene.shape.Rectangle;
 import vehicleftl.model.Room;
 import vehicleftl.model.Vehicle;
 import vehicleftl.model.VehicleListener;
+import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
+import vehicleftl.visualizer.interactiveelements.VehicleRoomVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;

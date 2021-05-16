@@ -17,10 +17,11 @@ public class VehicleRoom implements Room, PathRoom, VehicleTileListener {
   private int myHeight;
   private PathRoom myPathRoom;
   private String myID;
+  private boolean isTargeted;
 
   public VehicleRoom(int level, int width, int height, int x, int y) {
     myRepairProgress = 0;
-    myID = "Room" + new Random().nextInt(10000);
+    myID = "Room" + new Random().nextInt(4000);
 
     Tile[][] tiles = new Tile[width][height];
     for (int i = 0; i < width; i ++) {
@@ -123,6 +124,17 @@ public class VehicleRoom implements Room, PathRoom, VehicleTileListener {
   @Override
   public String getID() {
     return myID;
+  }
+
+  @Override
+  public void setTargeted(boolean targeted) {
+    isTargeted = targeted;
+    myListeners.forEach(listener -> {listener.reactToTargeted(targeted);});
+  }
+
+  @Override
+  public boolean isTargeted() {
+    return isTargeted;
   }
 
   @Override

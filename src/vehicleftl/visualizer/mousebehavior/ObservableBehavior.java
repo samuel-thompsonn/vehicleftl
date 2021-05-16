@@ -2,8 +2,10 @@ package vehicleftl.visualizer.mousebehavior;
 
 import vehicleftl.model.Crewmate;
 import vehicleftl.model.Room;
-import vehicleftl.model.Weapon;
 import vehicleftl.visualizer.*;
+import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
+import vehicleftl.visualizer.interactiveelements.WeaponInterfaceVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,12 +33,12 @@ public abstract class ObservableBehavior implements MouseBehavior {
   }
 
   @Override
-  public void reactToWeaponHover(Weapon weapon, WeaponInterfaceVisualizer weaponVis) {
+  public void reactToWeaponHover(WeaponInterfaceVisualizer weaponVis) {
     //does nothing by default
   }
 
   @Override
-  public void reactToWeaponNothing(Weapon weapon, WeaponInterfaceVisualizer weaponVis) {
+  public void reactToWeaponNothing(WeaponInterfaceVisualizer weaponVis) {
     //does nothing by default
   }
 
@@ -66,12 +68,12 @@ public abstract class ObservableBehavior implements MouseBehavior {
   }
 
   @Override
-  public void reactToWeaponPrimary(Weapon weapon, WeaponInterfaceVisualizer visualizer) {
+  public void reactToWeaponPrimary(WeaponInterfaceVisualizer visualizer) {
     //does nothing by default
   }
 
   @Override
-  public void reactToWeaponSecondary(Weapon weapon, WeaponInterfaceVisualizer visualizer) {
+  public void reactToWeaponSecondary(WeaponInterfaceVisualizer visualizer) {
     //does nothing by default
   }
 

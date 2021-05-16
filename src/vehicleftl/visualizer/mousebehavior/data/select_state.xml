@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<UILayout>
+    <UIState name="Select">
+        <Reaction>
+            <Input element="WeaponPanel" input="Secondary" state="Powered"/>
+            <Result state="Target"/>
+        </Reaction>
+        <Reaction>
+            <Input element="WeaponPanel" input="Secondary" state="Unpowered"/>
+            <Result action="IncreaseWeaponPower"/>
+        </Reaction>
+    </UIState>
+    <UIState name="Target">
+        <Reaction>
+            <Input element="Room" input="Secondary"/>
+            <Result state="Select" action="TargetRoomWithWeapon"/>
+        </Reaction>
+        <Reaction>
+            <Input element="Any" input="Primary"/>
+            <Result state="Select" action="CancelWeaponTarget"/>
+        </Reaction>
+    </UIState>
+    <UIState name="Command">
+        <Reaction>
+            <Input element="Room" input="Primary"/>
+            <Result action="AssignCrewmateToRoom"/>
+        </Reaction>
+        <Reaction>
+            <Input element="Any" input="Primary"/>
+            <Result state="Select"/>
+        </Reaction>
+    </UIState>
+</UILayout>

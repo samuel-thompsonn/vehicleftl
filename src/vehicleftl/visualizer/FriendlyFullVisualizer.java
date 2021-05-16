@@ -4,6 +4,10 @@ import javafx.scene.Group;
 import vehicleftl.model.Crewmate;
 import vehicleftl.model.Vehicle;
 import vehicleftl.model.Weapon;
+import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.VehicleCrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.VehicleWeaponInterface;
+import vehicleftl.visualizer.interactiveelements.WeaponInterfaceVisualizer;
 
 import java.util.List;
 

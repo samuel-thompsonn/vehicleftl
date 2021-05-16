@@ -22,4 +22,8 @@ public interface Room extends PathRoom {
   public int getWidth();
 
   public String getID();
+
+  public void setTargeted(boolean targeted);
+
+  public boolean isTargeted();
 }

@@ -1,9 +1,9 @@
-package vehicleftl.visualizer;
+package vehicleftl.visualizer.interactiveelements;
 
 import javafx.scene.Group;
 import vehicleftl.model.Crewmate;
 
-public interface CrewVisualizer {
+public interface CrewVisualizer extends InteractiveUIElement {
   public boolean pointInBounds(double x, double y);
 
   public Group getGroup();

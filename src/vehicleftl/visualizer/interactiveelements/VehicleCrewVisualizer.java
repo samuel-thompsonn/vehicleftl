@@ -1,4 +1,4 @@
-package vehicleftl.visualizer;
+package vehicleftl.visualizer.interactiveelements;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -7,6 +7,8 @@ import vehicleftl.model.Crewmate;
 import vehicleftl.model.pathfinding.Person;
 import vehicleftl.model.pathfinding.PersonListener;
 import vehicleftl.model.pathfinding.Tile;
+import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.TileVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,8 +45,13 @@ public class VehicleCrewVisualizer implements CrewVisualizer, PersonListener {
     myCircle.setCenterY(myY);
   }
 
-  private List<TileVisualizer> findPath(List<TileVisualizer> allTiles,TileVisualizer target) {
+  private List<TileVisualizer> findPath(List<TileVisualizer> allTiles, TileVisualizer target) {
     return new ArrayList<>();
+  }
+
+  @Override
+  public String getID() {
+    return myCrewmate.getID();
   }
 
   public boolean pointInBounds(double x, double y) {
@@ -58,6 +65,16 @@ public class VehicleCrewVisualizer implements CrewVisualizer, PersonListener {
   @Override
   public Group getGroup() {
     return myGroup;
+  }
+
+  @Override
+  public String getElementType() {
+    return "Crew";
+  }
+
+  @Override
+  public String getStateInfo() {
+    return null;
   }
 
   @Override

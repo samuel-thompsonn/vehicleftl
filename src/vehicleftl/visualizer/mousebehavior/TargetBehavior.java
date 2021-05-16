@@ -1,18 +1,17 @@
 package vehicleftl.visualizer.mousebehavior;
 
 import vehicleftl.model.Room;
-import vehicleftl.model.Weapon;
-import vehicleftl.visualizer.RoomVisualizer;
-import vehicleftl.visualizer.WeaponInterfaceVisualizer;
+import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
+import vehicleftl.visualizer.interactiveelements.WeaponInterfaceVisualizer;
 
-public class TargetingBehavior extends ObservableBehavior {
+public class TargetBehavior extends ObservableBehavior {
 
-  private Weapon myWeapon;
+  private String myWeaponId;
   private WeaponInterfaceVisualizer myVisualizer;
 
-  public TargetingBehavior(Weapon weapon, WeaponInterfaceVisualizer visualizer) {
+  public TargetBehavior(WeaponInterfaceVisualizer visualizer) {
     super();
-    myWeapon = weapon;
+    myWeaponId = visualizer.getWeaponId();
     myVisualizer = visualizer;
     myVisualizer.setSelected(true);
   }
@@ -27,10 +26,10 @@ public class TargetingBehavior extends ObservableBehavior {
   }
 
   @Override
-  public void reactToWeaponPrimary(Weapon weapon, WeaponInterfaceVisualizer visualizer) {
+  public void reactToWeaponPrimary(WeaponInterfaceVisualizer visualizer) {
     myVisualizer.setTarget(null,null);
     myVisualizer.setSelected(false);
-    changeBehavior(new TargetingBehavior(weapon,visualizer));
+    changeBehavior(new TargetBehavior(visualizer));
   }
 
   @Override

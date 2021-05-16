@@ -1,4 +1,4 @@
-package vehicleftl.visualizer;
+package vehicleftl.visualizer.interactiveelements;
 
 import javafx.scene.Group;
 

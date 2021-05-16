@@ -2,19 +2,17 @@ package vehicleftl.visualizer.mousebehavior;
 
 import vehicleftl.model.Crewmate;
 import vehicleftl.model.Room;
-import vehicleftl.model.Weapon;
-import vehicleftl.visualizer.CrewVisualizer;
-import vehicleftl.visualizer.MouseBehavior;
-import vehicleftl.visualizer.RoomVisualizer;
-import vehicleftl.visualizer.WeaponInterfaceVisualizer;
+import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
+import vehicleftl.visualizer.interactiveelements.WeaponInterfaceVisualizer;
 
-public class CommandingBehavior extends ObservableBehavior {
+public class CommandBehavior extends ObservableBehavior {
 
   private Crewmate myCrewmate;
   private CrewVisualizer myVisualizer;
 
   //This is about to change.
-  public CommandingBehavior(Crewmate crewmate, CrewVisualizer visualizer) {
+  public CommandBehavior(Crewmate crewmate, CrewVisualizer visualizer) {
     myCrewmate = crewmate;
     myVisualizer = visualizer;
     myVisualizer.setSelected(true);
@@ -26,15 +24,15 @@ public class CommandingBehavior extends ObservableBehavior {
   }
 
   @Override
-  public void reactToWeaponSecondary(Weapon weapon, WeaponInterfaceVisualizer visualizer) {
+  public void reactToWeaponSecondary(WeaponInterfaceVisualizer visualizer) {
     visualizer.setSelected(true);
     myVisualizer.setSelected(false);
-    changeBehavior(new TargetingBehavior(weapon, visualizer));
+    changeBehavior(new TargetBehavior(visualizer));
   }
 
   @Override
   public void reactToCrewSecondary(Crewmate crewmate, CrewVisualizer crewVis) {
     myVisualizer.setSelected(false);
-    changeBehavior(new CommandingBehavior(crewmate,crewVis));
+    changeBehavior(new CommandBehavior(crewmate,crewVis));
   }
 }

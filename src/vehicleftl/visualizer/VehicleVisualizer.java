@@ -1,6 +1,7 @@
 package vehicleftl.visualizer;
 
 import javafx.scene.Group;
+import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
 
 import java.util.List;
 

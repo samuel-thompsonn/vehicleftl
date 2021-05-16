@@ -1,4 +1,4 @@
-package vehicleftl.visualizer;
+package vehicleftl.visualizer.interactiveelements;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -7,7 +7,11 @@ import javafx.scene.shape.Rectangle;
 import vehicleftl.model.Room;
 import vehicleftl.model.Weapon;
 import vehicleftl.model.WeaponListener;
+import vehicleftl.visualizer.interactiveelements.util.ThreeKeyMap;
+import vehicleftl.visualizer.interactiveelements.util.TwoKeyMap;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,11 +35,13 @@ public class VehicleWeaponInterface implements WeaponInterfaceVisualizer, Weapon
   private double myWidth;
   private double myHeight;
   private Weapon myWeapon;
-  private boolean isSelected;
   private RoomVisualizer myTargetVis;
   private Circle myTargetCircle;
+  private boolean isPowered;
+  private ThreeKeyMap<String, String, String, Method> myReactions;
 
   public VehicleWeaponInterface(Weapon weapon, double x, double y) {
+    initReactions();
     myTargetVis = null;
     myGroup = new Group();
     myX = x;
@@ -120,23 +126,28 @@ public class VehicleWeaponInterface implements WeaponInterfaceVisualizer, Weapon
   }
 
   @Override
-  public Weapon getWeapon() {
-    return myWeapon;
-  }
-
-  @Override
   public void setSelected(boolean selected) {
-    isSelected = selected;
     myBorder.setStrokeWidth((selected)? 5 : 1);
   }
 
   @Override
-  public boolean getSelected() {
-    return isSelected;
+  public String getWeaponId() {
+    return myWeapon.getID();
+  }
+
+  @Override
+  public String getElementType() {
+    return "WeaponPanel";
+  }
+
+  @Override
+  public String getStateInfo() {
+    return (isPowered)? "Powered" : "Unpowered";
   }
 
   @Override
   public void reactToPowerChange(int newPower, int maxPower) {
+    isPowered = newPower == maxPower;
     for (int i = 0; i < myPowerIndicators.size(); i ++) {
       Rectangle powerIndicator = myPowerIndicators.get(i);
       if (i < newPower) {
@@ -146,6 +157,10 @@ public class VehicleWeaponInterface implements WeaponInterfaceVisualizer, Weapon
         powerIndicator.setFill(Color.TRANSPARENT);
       }
     }
+  }
+
+  private void initReactions() {
+    myReactions = new UILooksMapReader().getLooksMap(this, "WeaponVisualizer");
   }
 
   @Override
@@ -163,5 +178,52 @@ public class VehicleWeaponInterface implements WeaponInterfaceVisualizer, Weapon
 //        chargeBar.setFill(Color.TRANSPARENT);
 //      }
 //    }
+  }
+
+  @Override
+  public String getID() {
+    return myWeapon.getID();
+  }
+
+  private void highlightUnpowered() {
+    myBorder.setFill(Color.color(0,1.0,0,0.5));
+  }
+
+  private void highlightPowered() {
+    myBorder.setFill(Color.color(1.0,0,0,0.5));
+  }
+
+  private void lookDefault() {
+    myBorder.setFill(Color.TRANSPARENT);
+  }
+
+  private void highlightActive() {
+    myBorder.setFill(Color.color(0.7,0.5,0.0,0.5));
+  }
+
+  @Override
+  public void reactToUserInput(String UIState, String inputType, String UITarget) {
+    String targeted = (myWeapon.getID().equals(UITarget))? "True" : "False";
+    if (targeted.equals("True") && inputType.equals("Hover")) {
+//      System.out.println("Currently targeted");
+    }
+    Method reaction = myReactions.get(UIState, inputType, targeted);
+    if (reaction == null) {
+      reaction = myReactions.get(UIState, inputType, "Any");
+    }
+    if (reaction == null) {
+      reaction = myReactions.get(UIState, "Any", targeted);
+    }
+    if (reaction == null) {
+      reaction = myReactions.get(UIState, "Any", "Any");
+    }
+    if (reaction == null) {
+      reaction = myReactions.get("Default", "Any", "Any");
+    }
+    try {
+      reaction.invoke(this);
+    } catch (IllegalAccessException | InvocationTargetException e) {
+      e.printStackTrace();
+    }
   }
 }

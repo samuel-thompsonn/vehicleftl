@@ -1,10 +1,11 @@
-package vehicleftl.visualizer;
+package vehicleftl.visualizer.interactiveelements;
 
 import javafx.scene.Group;
 import vehicleftl.model.Room;
 import vehicleftl.model.RoomListener;
+import vehicleftl.visualizer.interactiveelements.InteractiveUIElement;
 
-public interface RoomVisualizer extends RoomListener {
+public interface RoomVisualizer extends RoomListener, InteractiveUIElement {
 
   public Group getGroup();
 

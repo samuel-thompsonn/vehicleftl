@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="9fbb07bf-bd58-4e2b-ad11-22148b94984f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/doc/ui_fsm.md" beforeDir="false" afterPath="$PROJECT_DIR$/doc/ui_fsm.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/model/Room.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/model/Room.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/model/RoomListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/model/RoomListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/model/VehicleRoom.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/model/VehicleRoom.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/model/VehicleWeapon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/model/VehicleWeapon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/ClickableUIElement.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/CrewVisualizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/FriendlyFullVisualizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/FriendlyFullVisualizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/FtlVehicleVisualizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/FtlVehicleVisualizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/MouseBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/MouseBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/RoomVisualizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/SystemVisualizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/SystemsTray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/SystemsTray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/TileVisualizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VehicleCrewVisualizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VehicleRoomVisualizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VehicleSystemVisualizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VehicleSystemsTray.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VehicleSystemsTray.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VehicleTileVisualizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VehicleTileVisualizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VehicleVisualizer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VehicleVisualizer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VehicleWeaponInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VisualizerSketch.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/VisualizerSketch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/WeaponInterfaceVisualizer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/mousebehavior/CommandingBehavior.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/mousebehavior/ObservableBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/mousebehavior/ObservableBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/mousebehavior/SelectBehavior.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/mousebehavior/SelectBehavior.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/vehicleftl/vehicleftl/visualizer/mousebehavior/TargetingBehavior.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vehicleftl/visualizer/interactiveelements/UILooksMapReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vehicleftl/visualizer/interactiveelements/UILooksMapReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vehicleftl/visualizer/interactiveelements/VehicleRoomVisualizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vehicleftl/visualizer/interactiveelements/VehicleRoomVisualizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vehicleftl/visualizer/interactiveelements/VehicleWeaponInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/vehicleftl/visualizer/interactiveelements/VehicleWeaponInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/vehicleftl/visualizer/interactiveelements/data/stateful_look.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/vehicleftl/visualizer/interactiveelements/data/stateful_look.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1ju7f2UIqkeKyaDGXPY7SPz2uOX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Sam\IdeaProjects\vehicleftl\src\vehicleftl\model" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="vehicleftl.visualizer.interactiveelements" />
+      <recent name="vehicleftl.model" />
+      <recent name="vehicleftl.visualizer" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.VisualizerSketch">
+    <configuration name="MouseBehaviorFactory" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vehicleftl.visualizer.mousebehavior.MouseBehaviorFactory" />
+      <module name="vehicleftl" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vehicleftl.visualizer.mousebehavior.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UILooksMapReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vehicleftl.visualizer.interactiveelements.UILooksMapReader" />
+      <module name="vehicleftl" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vehicleftl.visualizer.interactiveelements.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VehicleRoomVisualizer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vehicleftl.visualizer.interactiveelements.VehicleRoomVisualizer" />
+      <module name="vehicleftl" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vehicleftl.visualizer.interactiveelements.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="VisualizerSketch" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="vehicleftl.visualizer.VisualizerSketch" />
+      <module name="vehicleftl" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="vehicleftl.visualizer.mousebehavior.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.VisualizerSketch" />
+        <item itemvalue="Application.VehicleRoomVisualizer" />
+        <item itemvalue="Application.UILooksMapReader" />
+        <item itemvalue="Application.MouseBehaviorFactory" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9fbb07bf-bd58-4e2b-ad11-22148b94984f" name="Default Changelist" comment="" />
+      <created>1604642222585</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1604642222585</updated>
+      <workItem from="1604642225490" duration="5008000" />
+      <workItem from="1604727022323" duration="5272000" />
+      <workItem from="1604766151173" duration="3758000" />
+      <workItem from="1604882838499" duration="46000" />
+      <workItem from="1606091096358" duration="2274000" />
+      <workItem from="1606264531129" duration="1704000" />
+      <workItem from="1606426885545" duration="4264000" />
+      <workItem from="1606512055319" duration="3999000" />
+      <workItem from="1606613368636" duration="5758000" />
+      <workItem from="1606621376855" duration="2351000" />
+      <workItem from="1606627757791" duration="5008000" />
+      <workItem from="1606670785295" duration="5948000" />
+      <workItem from="1606760841079" duration="10809000" />
+      <workItem from="1606844565051" duration="24778000" />
+      <workItem from="1606935456134" duration="20986000" />
+      <workItem from="1607021014449" duration="12268000" />
+      <workItem from="1607104085759" duration="4650000" />
+      <workItem from="1607145101083" duration="2309000" />
+      <workItem from="1607373651461" duration="11000" />
+      <workItem from="1607460404919" duration="2713000" />
+      <workItem from="1607537153236" duration="1291000" />
+      <workItem from="1607539035105" duration="1906000" />
+      <workItem from="1607542125498" duration="71000" />
+      <workItem from="1607542217202" duration="4823000" />
+      <workItem from="1607661075990" duration="58000" />
+      <workItem from="1607708334138" duration="2738000" />
+      <workItem from="1608095888793" duration="42000" />
+      <workItem from="1621014887926" duration="31578000" />
+      <workItem from="1621123456007" duration="18718000" />
+      <workItem from="1621200991122" duration="5284000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="657" y="123" key="#VisualizerSketch" timestamp="1621207079346">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="657" y="123" key="#VisualizerSketch/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621207079346" />
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser" timestamp="1621206436527">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="226" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621206436527" />
+    <state x="605" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1621026646446">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="605" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621026646446" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1621207071043">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621207071043" />
+    <state width="1877" height="292" key="GridCell.Tab.0.bottom" timestamp="1621206611169">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="292" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621206611169" />
+    <state width="1877" height="292" key="GridCell.Tab.0.center" timestamp="1621206611169">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="292" key="GridCell.Tab.0.center/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621206611169" />
+    <state width="1877" height="292" key="GridCell.Tab.0.left" timestamp="1621206611169">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="292" key="GridCell.Tab.0.left/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621206611169" />
+    <state width="1877" height="292" key="GridCell.Tab.0.right" timestamp="1621206611169">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="292" key="GridCell.Tab.0.right/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621206611169" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1621150525772">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621150525772" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1621150525771">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621150525771" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1621150525771">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621150525771" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1621150525771">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621150525771" />
+    <state x="667" y="224" width="585" height="592" key="find.popup" timestamp="1621202847085">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="224" width="585" height="592" key="find.popup/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621202847085" />
+    <state x="755" y="267" key="refactoring.ChangeSignatureDialog" timestamp="1621145658150">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="755" y="267" key="refactoring.ChangeSignatureDialog/0.0.1920.1040/-1366.304.1366.768@0.0.1920.1040" timestamp="1621145658150" />
+  </component>
+</project>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nicknames>
+    <Nickname method="highlightYellow" alias="HighlightCommand"/>
+    <Nickname method="lookNormal" alias="Normal"/>
+    <Nickname method="highlightRed" alias="HighlightTarget"/>
+</Nicknames>

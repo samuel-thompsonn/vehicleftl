@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nicknames>
+    <Nickname method="highlightPowered" alias="HighlightPowered"/>
+    <Nickname method="highlightUnpowered" alias="HighlightUnpowered"/>
+    <Nickname method="lookDefault" alias="Normal"/>
+</Nicknames>

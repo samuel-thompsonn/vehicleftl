@@ -5,9 +5,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import vehicleftl.model.Room;
-import vehicleftl.visualizer.VehicleTileVisualizer;
 import vehicleftl.visualizer.interactiveelements.util.ReactionMap;
-import vehicleftl.visualizer.interactiveelements.util.ThreeKeyMap;
 import vehicleftl.visualizer.interactiveelements.util.UserInputReaction;
 
 import java.lang.reflect.InvocationTargetException;
@@ -48,8 +46,8 @@ public class VehicleRoomVisualizer implements RoomVisualizer {
     myTargetedIndicator = new Circle(20, Color.color(1,0,0,0.5));
     myTargetedIndicator.setStroke(Color.color(0,0,0,1));
     myTargetedIndicator.setVisible(myRoom.isTargeted());
-    myTargetedIndicator.setCenterX(myX + (myWidth/2));
-    myTargetedIndicator.setCenterY(myY + (myHeight/2));
+    myTargetedIndicator.setCenterX(myX + (myWidth/2.0));
+    myTargetedIndicator.setCenterY(myY + (myHeight/2.0));
 
     myTileVisualizerGroup = new Group();
     myTiles = new ArrayList<>();
@@ -173,9 +171,5 @@ public class VehicleRoomVisualizer implements RoomVisualizer {
     } catch (IllegalAccessException | InvocationTargetException e) {
       e.printStackTrace();
     }
-  }
-
-  private void testInvoke() {
-    System.out.println("Hello!");
   }
 }

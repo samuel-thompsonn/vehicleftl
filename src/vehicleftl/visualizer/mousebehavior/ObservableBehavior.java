@@ -2,7 +2,8 @@ package vehicleftl.visualizer.mousebehavior;
 
 import vehicleftl.model.Crewmate;
 import vehicleftl.model.Room;
-import vehicleftl.visualizer.*;
+import vehicleftl.visualizer.MouseBehavior;
+import vehicleftl.visualizer.MouseListener;
 import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
 import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
 import vehicleftl.visualizer.interactiveelements.WeaponInterfaceVisualizer;

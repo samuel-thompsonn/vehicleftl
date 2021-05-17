@@ -12,7 +12,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import vehicleftl.model.*;
-import vehicleftl.visualizer.interactiveelements.*;
+import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.InteractiveUIElement;
+import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
+import vehicleftl.visualizer.interactiveelements.VehicleCrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.VehicleWeaponInterface;
+import vehicleftl.visualizer.interactiveelements.WeaponInterfaceVisualizer;
 import vehicleftl.visualizer.mousebehavior.MouseBehaviorFactory;
 import vehicleftl.visualizer.mousebehavior.MouseStatefulBehavior;
 import vehicleftl.visualizer.mousebehavior.SelectBehavior;
@@ -103,7 +108,6 @@ public class VisualizerSketch extends Application implements MouseListener, Stat
       myMouseStatefulBehavior.respondToAction(elementType, inputType, stateInfo, elementID, model);
       for (RoomVisualizer roomVis : secondVehicleVis.getRoomVisualizers()) {
         if (roomVis.pointInBounds(event.getX(),event.getY())) {
-          myMouseBehavior.reactToEnemyRoomSecondary(roomVis.getRoom(),roomVis);
           return;
         }
       }

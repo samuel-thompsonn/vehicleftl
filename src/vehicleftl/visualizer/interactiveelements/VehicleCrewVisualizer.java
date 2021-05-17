@@ -7,8 +7,6 @@ import vehicleftl.model.Crewmate;
 import vehicleftl.model.pathfinding.Person;
 import vehicleftl.model.pathfinding.PersonListener;
 import vehicleftl.model.pathfinding.Tile;
-import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
-import vehicleftl.visualizer.interactiveelements.TileVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,6 +83,7 @@ public class VehicleCrewVisualizer implements CrewVisualizer, PersonListener {
   @Override
   public void setSelected(boolean selected) {
     System.out.println("Am I selected? " + selected);
+    System.out.println("Yo.");
     myCircle.setStrokeWidth((selected)? 5 : 0);
     myCircle.setStroke(Color.BLACK);
   }

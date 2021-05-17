@@ -6,7 +6,7 @@ import vehicleftl.visualizer.MouseBehavior;
 import vehicleftl.visualizer.MouseListener;
 import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
 import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
-import vehicleftl.visualizer.interactiveelements.WeaponInterfaceVisualizer;
+import vehicleftl.visualizer.interactiveelements.weaponvisualizer.WeaponInterfaceVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;

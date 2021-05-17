@@ -1,4 +1,4 @@
-package vehicleftl.visualizer.interactiveelements;
+package vehicleftl.visualizer.interactiveelements.weaponvisualizer;
 
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;

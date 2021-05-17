@@ -4,7 +4,7 @@ import vehicleftl.model.Crewmate;
 import vehicleftl.model.Room;
 import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
 import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
-import vehicleftl.visualizer.interactiveelements.WeaponInterfaceVisualizer;
+import vehicleftl.visualizer.interactiveelements.weaponvisualizer.WeaponInterfaceVisualizer;
 
 public class SelectBehavior extends ObservableBehavior {
   @Override

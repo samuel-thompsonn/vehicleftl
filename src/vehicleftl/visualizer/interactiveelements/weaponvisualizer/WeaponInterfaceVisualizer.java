@@ -1,4 +1,4 @@
-package vehicleftl.visualizer.interactiveelements;
+package vehicleftl.visualizer.interactiveelements.weaponvisualizer;
 
 import javafx.scene.Group;
 import vehicleftl.model.Room;

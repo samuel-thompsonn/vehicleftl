@@ -4,8 +4,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-import vehicleftl.model.*;
-import vehicleftl.visualizer.interactiveelements.util.ReactionMap;
+import vehicleftl.model.FtlVehicle;
+import vehicleftl.model.VehicleWeapon;
+import vehicleftl.model.Weapon;
+import vehicleftl.visualizer.interactiveelements.util.ReactionClassMap;
 import vehicleftl.visualizer.interactiveelements.util.ThreeKeyMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -13,17 +15,20 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
-public class UILooksMapReader {
-  private static final String FILENAME = "src/vehicleftl/visualizer/interactiveelements/data/stateful_look.xml";
-  private static final String NICKNAMES_PATH = "src/vehicleftl/visualizer/interactiveelements/data/methodnicknames/";
+public class UILooksClassReader {
+  private static final String FILENAME = "src/vehicleftl/visualizer/interactiveelements/data/stateful_look_classes.xml";
+  private static final String NICKNAMES_PATH = "src/vehicleftl/visualizer/interactiveelements/data/classnicknames/";
+  private static final String CLASS_PATH = "vehicleftl.visualizer.interactiveelements.";
 
-  public ReactionMap getLooksMap(InteractiveUIElement uiElement, String type) {
-    ThreeKeyMap<String, String, String, Method> looksMap = new ThreeKeyMap<>();
+  public ReactionClassMap getLooksMap(InteractiveUIElement uiElement, String type, Object... args) {
+    ThreeKeyMap<String, String, String, InterfaceLook> looksMap = new ThreeKeyMap<>();
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     try {
       DocumentBuilder db = dbf.newDocumentBuilder();
@@ -39,13 +44,21 @@ public class UILooksMapReader {
         String targeted = reaction.getAttribute("targeted");
         if (targeted.equals("")) { targeted = "Any"; }
         String result = reaction.getAttribute("look");
-        Method resultMethod = uiElement.getClass().getDeclaredMethod(nicknameMap.get(result));
-        looksMap.put(state, input, targeted, resultMethod);
+        Class look = Class.forName(CLASS_PATH.concat(nicknameMap.get(result)));
+        Constructor constructor = look.getConstructors()[0];
+        InterfaceLook lookObject = (InterfaceLook)look.getConstructors()[0].newInstance(args);
+        looksMap.put(state, input, targeted, lookObject);
       }
-    } catch (ParserConfigurationException | SAXException | IOException | NoSuchMethodException e) {
+    } catch (ParserConfigurationException | SAXException | IOException | ClassNotFoundException e) {
+      e.printStackTrace();
+    } catch (IllegalAccessException e) {
+      e.printStackTrace();
+    } catch (InstantiationException e) {
+      e.printStackTrace();
+    } catch (InvocationTargetException e) {
       e.printStackTrace();
     }
-    return new ReactionMap(looksMap);
+    return new ReactionClassMap(looksMap);
   }
 
   private Element findElementWithAttribute(NodeList nodeList, String attName, String attVal) {
@@ -69,7 +82,7 @@ public class UILooksMapReader {
       NodeList nickList = doc.getElementsByTagName("Nickname");
       for (int i = 0; i < nickList.getLength(); i ++) {
         Element nickname = (Element)nickList.item(i);
-        String methodName = nickname.getAttribute("method");
+        String methodName = nickname.getAttribute("class");
         String methodNick = nickname.getAttribute("alias");
         nicknameMap.put(methodNick, methodName);
       }
@@ -91,12 +104,12 @@ public class UILooksMapReader {
       return;
     }
     try {
-      InterfaceLook look = (InterfaceLook) cls.getConstructors()[0].newInstance(weapon, 0, 0);
-    } catch (InstantiationException e) {
-      e.printStackTrace();
-    } catch (IllegalAccessException e) {
-      e.printStackTrace();
-    } catch (InvocationTargetException e) {
+      List<Object> argList = new ArrayList<>();
+      argList.add(weapon);
+      argList.add(0);
+      argList.add(1);
+      InterfaceLook look = (InterfaceLook) cls.getConstructors()[0].newInstance();
+    } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
       e.printStackTrace();
     }
   }

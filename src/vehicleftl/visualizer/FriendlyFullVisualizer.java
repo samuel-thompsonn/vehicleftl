@@ -6,8 +6,8 @@ import vehicleftl.model.Vehicle;
 import vehicleftl.model.Weapon;
 import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
 import vehicleftl.visualizer.interactiveelements.VehicleCrewVisualizer;
-import vehicleftl.visualizer.interactiveelements.VehicleWeaponInterface;
-import vehicleftl.visualizer.interactiveelements.WeaponInterfaceVisualizer;
+import vehicleftl.visualizer.interactiveelements.weaponvisualizer.VehicleWeaponInterface;
+import vehicleftl.visualizer.interactiveelements.weaponvisualizer.WeaponInterfaceVisualizer;
 
 import java.util.List;
 

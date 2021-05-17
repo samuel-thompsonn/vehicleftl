@@ -1,17 +1,19 @@
-package vehicleftl.visualizer.interactiveelements;
+package vehicleftl.visualizer.interactiveelements.weaponvisualizer;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import vehicleftl.model.Room;
 import vehicleftl.model.Weapon;
 import vehicleftl.model.WeaponListener;
+import vehicleftl.visualizer.interactiveelements.InterfaceLook;
+import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
+import vehicleftl.visualizer.interactiveelements.VehicleSystemVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class StandardWeaponLook implements WeaponListener {
+public abstract class StandardWeaponLook implements WeaponListener, InterfaceLook {
   public static final int DISPLAY_WIDTH_BASE = 100;
   public static final int DISPLAY_HEIGHT_BASE = 75;
   public static final double SCALE = 0.8;
@@ -44,6 +46,7 @@ public abstract class StandardWeaponLook implements WeaponListener {
     myBorder = new Rectangle(myX,myY,myWidth,myHeight);
     myBorder.setStroke(Color.BLACK);
     myBorder.setFill(Color.TRANSPARENT);
+    initBorder(myBorder);
     myGroup.getChildren().add(myBorder);
     myPowerIndicators = initPowerIndicators(weapon.getLevel());
     initChargeIndicators(weapon.getChargeTime());
@@ -70,8 +73,6 @@ public abstract class StandardWeaponLook implements WeaponListener {
   }
 
   private void initChargeIndicators(double maxCharge) {
-
-
     myChargeIndicator = new Rectangle(myX + (0.5 * CHARGE_BAR_WIDTH),myY + (myHeight - (0.5*CHARGE_BAR_WIDTH)),CHARGE_BAR_WIDTH,0);
     myChargeIndicator.setStroke(Color.TRANSPARENT);
     myChargeIndicator.setFill(Color.YELLOW);

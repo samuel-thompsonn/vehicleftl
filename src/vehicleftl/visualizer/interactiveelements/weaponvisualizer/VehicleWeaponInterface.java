@@ -1,4 +1,4 @@
-package vehicleftl.visualizer.interactiveelements;
+package vehicleftl.visualizer.interactiveelements.weaponvisualizer;
 
 import javafx.scene.Group;
 import javafx.scene.paint.Color;
@@ -7,16 +7,13 @@ import javafx.scene.shape.Rectangle;
 import vehicleftl.model.Room;
 import vehicleftl.model.Weapon;
 import vehicleftl.model.WeaponListener;
-import vehicleftl.visualizer.interactiveelements.util.ReactionMap;
-import vehicleftl.visualizer.interactiveelements.util.ThreeKeyMap;
-import vehicleftl.visualizer.interactiveelements.util.TwoKeyMap;
+import vehicleftl.visualizer.interactiveelements.*;
+import vehicleftl.visualizer.interactiveelements.util.ReactionClassMap;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VehicleWeaponInterface extends ReactionMappedElement implements WeaponInterfaceVisualizer, WeaponListener {
+public class VehicleWeaponInterface implements WeaponInterfaceVisualizer, WeaponListener {
 
   public static final int DISPLAY_WIDTH_BASE = 100;
   public static final int DISPLAY_HEIGHT_BASE = 75;
@@ -26,6 +23,7 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
   public static final double CHARGE_BAR_WIDTH_BASE = 20;
   public static final double CHARGE_BAR_WIDTH = CHARGE_BAR_WIDTH_BASE * SCALE;
 
+  private Group myOuterGroup;
   private Group myGroup;
   private List<Rectangle> myPowerIndicators;
   private List<Rectangle> myChargeIndicators;
@@ -39,11 +37,16 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
   private RoomVisualizer myTargetVis;
   private Circle myTargetCircle;
   private boolean isPowered;
+  private StandardWeaponLook myLook;
+  private ReactionClassMap myReactions;
 
   public VehicleWeaponInterface(Weapon weapon, double x, double y) {
-    super();
+    initReactions(weapon, x, y);
+    myLook = new InactiveWeaponLook(weapon, x, y);
     myTargetVis = null;
+    myOuterGroup = new Group();
     myGroup = new Group();
+    myOuterGroup.getChildren().add(myGroup);
     myX = x;
     myY = y;
     myWidth = DISPLAY_WIDTH;
@@ -61,6 +64,10 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
     myTargetCircle.setFill(Color.TRANSPARENT);
     myTargetCircle.setStroke(Color.TRANSPARENT);
     myGroup.getChildren().add(myTargetCircle);
+  }
+
+  private void initReactions(Weapon weapon, double x, double y) {
+    myReactions = new UILooksClassReader().getLooksMap(this, getElementType(), weapon, x, y);
   }
 
   private List<Rectangle> initPowerIndicators(int weaponPower) {
@@ -103,7 +110,7 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
 
   @Override
   public Group getGroup() {
-    return myGroup;
+    return myOuterGroup;
   }
 
   @Override
@@ -186,38 +193,35 @@ public class VehicleWeaponInterface extends ReactionMappedElement implements Wea
   }
 
   private void highlightUnpowered() {
+//    myBorder.setFill(Color.color(0,1.0,0,0.5));
     myBorder.setFill(Color.color(0,1.0,0,0.5));
+    myOuterGroup.getChildren().clear();
+    myOuterGroup.getChildren().add(myLook.getGroup());
   }
 
   private void highlightPowered() {
+    myOuterGroup.getChildren().clear();
+    myOuterGroup.getChildren().add(myGroup);
     myBorder.setFill(Color.color(1.0,0,0,0.5));
   }
 
   private void lookDefault() {
+    myOuterGroup.getChildren().clear();
+    myOuterGroup.getChildren().add(myGroup);
     myBorder.setFill(Color.TRANSPARENT);
   }
 
   private void highlightActive() {
+    myOuterGroup.getChildren().clear();
+    myOuterGroup.getChildren().add(myGroup);
     myBorder.setFill(Color.color(0.7,0.5,0.0,0.5));
   }
 
   @Override
-  protected void executeLook(Method m) {
-    try {
-      m.invoke(this);
-    } catch (IllegalAccessException | InvocationTargetException e) {
-      e.printStackTrace();
-    }
+  public void reactToUserInput(String UIState, String inputType, String UITarget) {
+    String targeted = (getID().equals(UITarget))? "True" : "False";
+    InterfaceLook reaction = myReactions.get(UIState, inputType, targeted);
+    myOuterGroup.getChildren().clear();
+    myOuterGroup.getChildren().add(reaction.getGroup());
   }
-
-  //  @Override
-//  public void reactToUserInput(String UIState, String inputType, String UITarget) {
-//    String targeted = (getID().equals(UITarget))? "True" : "False";
-//    Method reaction = myReactions.get(UIState, inputType, targeted);
-//    try {
-//      reaction.invoke(this);
-//    } catch (IllegalAccessException | InvocationTargetException e) {
-//      e.printStackTrace();
-//    }
-//  }
 }

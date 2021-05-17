@@ -12,6 +12,7 @@ import vehicleftl.visualizer.interactiveelements.VehicleSystemVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public abstract class StandardWeaponLook implements WeaponListener, InterfaceLook {
   public static final int DISPLAY_WIDTH_BASE = 100;
@@ -34,7 +35,7 @@ public abstract class StandardWeaponLook implements WeaponListener, InterfaceLoo
   private RoomVisualizer myTargetVis;
   private Circle myTargetCircle;
 
-  public StandardWeaponLook(Weapon weapon, double x, double y) {
+  public StandardWeaponLook(Weapon weapon, double x, double y, Map<String, String> extraArgs) {
     super();
     myTargetVis = null;
     myGroup = new Group();
@@ -46,7 +47,7 @@ public abstract class StandardWeaponLook implements WeaponListener, InterfaceLoo
     myBorder = new Rectangle(myX,myY,myWidth,myHeight);
     myBorder.setStroke(Color.BLACK);
     myBorder.setFill(Color.TRANSPARENT);
-    initBorder(myBorder);
+    initBorder(myBorder, extraArgs);
     myGroup.getChildren().add(myBorder);
     myPowerIndicators = initPowerIndicators(weapon.getLevel());
     initChargeIndicators(weapon.getChargeTime());
@@ -58,7 +59,7 @@ public abstract class StandardWeaponLook implements WeaponListener, InterfaceLoo
     myGroup.getChildren().add(myTargetCircle);
   }
 
-  public abstract void initBorder(Rectangle borderRect);
+  public abstract void initBorder(Rectangle borderRect, Map<String, String> args);
 
   private List<Rectangle> initPowerIndicators(int weaponPower) {
     List<Rectangle> returnedList = new ArrayList<>();

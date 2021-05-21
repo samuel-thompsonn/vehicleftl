@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nicknames>
+    <Nickname class="crewvisualizer.ColoredCrewLook" alias="NoHighlight">
+        <Param label="r" value="0.0"/>
+        <Param label="g" value="0.0"/>
+        <Param label="b" value="0.0"/>
+    </Nickname>
+    <Nickname class="crewvisualizer.ColoredCrewLook" alias="Highlight">
+        <Param label="r" value="0.5"/>
+        <Param label="g" value="0.5"/>
+        <Param label="b" value="0.5"/>
+    </Nickname>
+    <Nickname class="crewvisualizer.ColoredCrewLook" alias="Selected">
+        <Param label="r" value="1.0"/>
+        <Param label="g" value="1.0"/>
+        <Param label="b" value="1.0"/>
+    </Nickname>
+</Nicknames>

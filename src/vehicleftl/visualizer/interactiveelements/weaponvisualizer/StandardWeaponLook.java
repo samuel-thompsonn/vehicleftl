@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 import vehicleftl.model.Weapon;
 import vehicleftl.model.WeaponListener;
 import vehicleftl.visualizer.interactiveelements.InterfaceLook;
-import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
+import vehicleftl.visualizer.interactiveelements.roomvisualizer.RoomVisualizer;
 import vehicleftl.visualizer.interactiveelements.VehicleSystemVisualizer;
 
 import java.util.ArrayList;
@@ -34,9 +34,11 @@ public abstract class StandardWeaponLook implements WeaponListener, InterfaceLoo
   private Weapon myWeapon;
   private RoomVisualizer myTargetVis;
   private Circle myTargetCircle;
+  private Map<String, String> initialArgs;
 
   public StandardWeaponLook(Weapon weapon, double x, double y, Map<String, String> extraArgs) {
     super();
+    initialArgs = extraArgs;
     myTargetVis = null;
     myGroup = new Group();
     myX = x;
@@ -51,7 +53,9 @@ public abstract class StandardWeaponLook implements WeaponListener, InterfaceLoo
     myGroup.getChildren().add(myBorder);
     myPowerIndicators = initPowerIndicators(weapon.getLevel());
     initChargeIndicators(weapon.getChargeTime());
+
     weapon.subscribe(this);
+
 
     myTargetCircle = new Circle(myX + 50, myY + 50, 15);
     myTargetCircle.setFill(Color.TRANSPARENT);
@@ -91,6 +95,7 @@ public abstract class StandardWeaponLook implements WeaponListener, InterfaceLoo
 
   @Override
   public void reactToPowerChange(int newPower, int maxPower) {
+    changeBorderForPower(myWeapon.isPowered(), myBorder);
     for (int i = 0; i < myPowerIndicators.size(); i ++) {
       Rectangle powerIndicator = myPowerIndicators.get(i);
       if (i < newPower) {
@@ -102,28 +107,21 @@ public abstract class StandardWeaponLook implements WeaponListener, InterfaceLoo
     }
   }
 
+  protected void changeBorderForPower(boolean powered, Rectangle borderRect) {
+    //does nothing by default
+  }
+
+  protected void changeBorderForCharge(boolean charged, Rectangle borderRect) {
+    //does nothing by default
+  }
+
   @Override
   public void reactToCharge(double charge, double maxCharge) {
+    changeBorderForCharge((charge==maxCharge), myBorder);
     double height = (charge/maxCharge) * (myHeight - CHARGE_BAR_WIDTH);
     double maxHeight = 1.0 * (myHeight - CHARGE_BAR_WIDTH);
     myChargeIndicator.setY(myY + (0.5 * CHARGE_BAR_WIDTH) + maxHeight - height);
     myChargeIndicator.setHeight(height);
-  }
-
-  private void highlightUnpowered() {
-    myBorder.setFill(Color.color(0,1.0,0,0.5));
-  }
-
-  private void highlightPowered() {
-    myBorder.setFill(Color.color(1.0,0,0,0.5));
-  }
-
-  private void lookDefault() {
-    myBorder.setFill(Color.TRANSPARENT);
-  }
-
-  private void highlightActive() {
-    myBorder.setFill(Color.color(0.7,0.5,0.0,0.5));
   }
 
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<StatefulLooks>
+    <States name="Room">
+        <Nicknames file="room-nicknames.xml"/>
+        <Reaction state="Default" action="Any" look="Normal"/>
+        <Reaction state="Target" action="Hover" look="HighlightTarget"/>
+        <Reaction state="Command" action="Hover" look="HighlightCommand"/>
+    </States>
+    <States name="WeaponPanel">
+        <Nicknames file="weapon-nicknames.xml"/>
+        <Reaction state="Default" action="Any" look="ActiveHighlight"/>
+        <Reaction state="Select" action="NoHover" look="InactiveNoHighlight"/>
+        <Reaction state="Select" action="Hover" look="InactiveHighlight"/>
+        <Reaction state="Target" action="NoHover" targeted="True" look="ActiveNoHighlight"/>
+        <Reaction state="Target" action="Hover" targeted="True" look="InactiveHighlight"/>
+        <Reaction state="Command" action="NoHover" look="InactiveHighlight"/>
+        <Reaction state="Command" action="Hover" look="InactiveHighlight"/>
+    </States>
+    <States name="Crew">
+        <Nicknames file="crew-nicknames.xml"/>
+        <Reaction state="Default" action="Any" look="NoHighlight"/>
+        <Reaction state="Select" action="NoHover" look="NoHighlight"/>
+        <Reaction state="Select" action="Hover" look="Highlight"/>
+        <Reaction state="Command" action="NoHover" targeted="True" look="Selected"/>
+        <Reaction state="Command" action="Hover" targeted="True" look="Selected"/>
+        <Reaction state="Command" action="NoHover" targeted="False" look="NoHighlight"/>
+        <Reaction state="Command" action="Hover" targeted="False" look="NoHighlight"/>
+    </States>
+</StatefulLooks>

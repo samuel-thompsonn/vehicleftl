@@ -6,8 +6,8 @@ import javafx.scene.shape.Rectangle;
 import vehicleftl.model.Room;
 import vehicleftl.model.Vehicle;
 import vehicleftl.model.VehicleListener;
-import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
-import vehicleftl.visualizer.interactiveelements.VehicleRoomVisualizer;
+import vehicleftl.visualizer.interactiveelements.roomvisualizer.RoomVisualizer;
+import vehicleftl.visualizer.interactiveelements.roomvisualizer.VehicleRoomVisualizer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +35,7 @@ public class FtlVehicleVisualizer implements VehicleVisualizer, VehicleListener 
     myRoomVisualizers = new ArrayList<>();
     initRoomVisualizers();
     myShieldRectangles = new ArrayList<>();
-    myVehicle.subscribe(this);
+    myVehicle.subscribeToVehicle(this);
     myShieldVisualizer = new Group();
     myGroup.getChildren().add(myShieldVisualizer);
   }
@@ -59,6 +59,11 @@ public class FtlVehicleVisualizer implements VehicleVisualizer, VehicleListener 
       myShieldRectangles.add(shieldRect);
       myShieldVisualizer.getChildren().add(shieldRect);
     }
+  }
+
+  @Override
+  public void reactToHullPointChange(int currentHull, int maxHull) {
+    //does nothing in response
   }
 
   @Override

@@ -6,25 +6,31 @@ import java.lang.reflect.Method;
 
 public class ReactionClassMap {
 
-  private ThreeKeyMap<String, String, String, InterfaceLook> myInternalMap;
+  private MultiKeyMap<String, InterfaceLook> myInternalMap;
 
-  public ReactionClassMap(ThreeKeyMap<String, String, String, InterfaceLook> mappings) {
+  public ReactionClassMap(MultiKeyMap<String, InterfaceLook> mappings) {
     myInternalMap = mappings;
   }
 
-  public InterfaceLook get(String state, String input, String targeted) {
-    InterfaceLook reaction = myInternalMap.get(state, input, targeted);
+  public InterfaceLook get(String state, String input, String targeted, String extraInfo) {
+    InterfaceLook reaction = myInternalMap.get(state, input, targeted, extraInfo);
     if (reaction == null) {
-      reaction = myInternalMap.get(state, input, "Any");
+      reaction = myInternalMap.get(state, input, targeted, "Any");
     }
     if (reaction == null) {
-      reaction = myInternalMap.get(state, "Any", targeted);
+      reaction = myInternalMap.get(state, input, "Any", extraInfo);
     }
     if (reaction == null) {
-      reaction = myInternalMap.get(state, "Any", "Any");
+      reaction = myInternalMap.get(state, input, "Any", "Any");
     }
     if (reaction == null) {
-      reaction = myInternalMap.get("Default", "Any", "Any");
+      reaction = myInternalMap.get(state, "Any", targeted, "Any");
+    }
+    if (reaction == null) {
+      reaction = myInternalMap.get(state, "Any", "Any", "Any");
+    }
+    if (reaction == null) {
+      reaction = myInternalMap.get("Default", "Any", "Any", "Any");
     }
     return reaction;
   }

@@ -12,37 +12,34 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import vehicleftl.model.*;
-import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.crewvisualizer.CrewVisualizer;
 import vehicleftl.visualizer.interactiveelements.InteractiveUIElement;
-import vehicleftl.visualizer.interactiveelements.RoomVisualizer;
-import vehicleftl.visualizer.interactiveelements.VehicleCrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.roomvisualizer.RoomVisualizer;
+import vehicleftl.visualizer.interactiveelements.crewvisualizer.VehicleCrewVisualizer;
 import vehicleftl.visualizer.interactiveelements.weaponvisualizer.VehicleWeaponInterface;
 import vehicleftl.visualizer.interactiveelements.weaponvisualizer.WeaponInterfaceVisualizer;
 import vehicleftl.visualizer.mousebehavior.MouseBehaviorFactory;
 import vehicleftl.visualizer.mousebehavior.MouseStatefulBehavior;
-import vehicleftl.visualizer.mousebehavior.SelectBehavior;
 import vehicleftl.visualizer.mousebehavior.StatefulBehaviorListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
-public class VisualizerSketch extends Application implements MouseListener, StatefulBehaviorListener {
+public class VisualizerSketch extends Application implements StatefulBehaviorListener {
 
   private List<WeaponInterfaceVisualizer> myWeaponVisualizers;
   private List<Room> myRooms;
   private Vehicle myVehicle;
   private List<CrewVisualizer> myCrew;
-  private MouseBehavior myMouseBehavior;
   private MouseStatefulBehavior myMouseStatefulBehavior;
   private List<InteractiveUIElement> myInteractiveElements;
 
   @Override
   public void start(Stage primaryStage) throws Exception {
     myInteractiveElements = new ArrayList<>();
-    myMouseBehavior = new SelectBehavior();
     initMouseBehavior();
-    myMouseBehavior.subscribe(this);
     Group group = new Group();
     myWeaponVisualizers = new ArrayList<>();
     myRooms = new ArrayList<>();
@@ -51,14 +48,14 @@ public class VisualizerSketch extends Application implements MouseListener, Stat
     TextField commandField = new TextField();
     commandField.setTranslateX(450);
     commandField.setTranslateY(300);
-    group.getChildren().add(commandField);
+//    group.getChildren().add(commandField);
     Button submitButton = new Button("Submit");
     submitButton.setTranslateX(575);
     submitButton.setTranslateY(300);
     submitButton.setOnAction(event -> {
       processText(commandField.getText(),model);
     });
-    group.getChildren().add(submitButton);
+//    group.getChildren().add(submitButton);
 
     Vehicle vehicle = new FtlVehicle();
     VehicleVisualizer vehicleVis = new FtlVehicleVisualizer(vehicle, 50, 50);
@@ -78,13 +75,17 @@ public class VisualizerSketch extends Application implements MouseListener, Stat
     model.addVehicle(vehicle);
 
     Vehicle secondVehicle = new FtlVehicle();
-    VehicleVisualizer secondVehicleVis = new FtlVehicleVisualizer(secondVehicle, 400,50);
+    VehicleVisualizer secondVehicleVis = new FtlVehicleVisualizer(secondVehicle, 400,25);
     group.getChildren().add(secondVehicleVis.getGroup());
     for (Crewmate crewmate : secondVehicle.getCrew()) {
       CrewVisualizer crewVis = new VehicleCrewVisualizer(400,50,crewmate);
       group.getChildren().add(crewVis.getGroup());
     }
     model.addVehicle(secondVehicle);
+
+
+    HullPointVisualizer hullVis = new HullPointVisualizer(vehicle, 450, 250, 300, 50);
+    group.getChildren().add(hullVis.getGroup());
 
     Scene scene = new Scene(group,1024,600);
     scene.setOnMouseClicked(event -> {
@@ -120,6 +121,7 @@ public class VisualizerSketch extends Application implements MouseListener, Stat
 
     Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1/60.), event -> {
       vehicle.update(1/60.);
+      myInteractiveElements.forEach(element -> element.update(1/60.));
     }));
     timeline.setCycleCount(Timeline.INDEFINITE);
     timeline.play();
@@ -140,24 +142,25 @@ public class VisualizerSketch extends Application implements MouseListener, Stat
   }
 
   private void resolveMouseHover(MouseEvent event, VehicleVisualizer vehicleVis) {
-    boolean mouseHovered = false;
+    Map<String, Integer> depthMap = Map.of(
+            "Crew", 1,
+            "WeaponPanel", 2,
+            "Room", 3,
+            "System", 4
+    );
+    InteractiveUIElement hoverElement = null;
     for (InteractiveUIElement element : myInteractiveElements) {
-      if (!mouseHovered && element.pointInBounds(event.getX(), event.getY())) {
-        element.reactToUserInput(myMouseStatefulBehavior.getType(), "Hover", myMouseStatefulBehavior.getElementId());
+      if ((hoverElement == null || depthMap.get(element.getElementType()) < depthMap.get(hoverElement.getElementType()))
+              && element.pointInBounds(event.getX(), event.getY())) {
 //        element.reactToHover(myMouseStatefulBehavior.getType());
-        mouseHovered = true;
+        hoverElement = element;
       }
       else {
         element.reactToUserInput(myMouseStatefulBehavior.getType(), "NoHover", myMouseStatefulBehavior.getElementId());
 //        element.reactToNoHover(myMouseStatefulBehavior.getType());
       }
-    }
-    for (RoomVisualizer roomVis : vehicleVis.getRoomVisualizers()) {
-      if (roomVis.pointInBounds(event.getX(),event.getY())) {
-        myMouseBehavior.reactToRoomHover(roomVis.getRoom(),roomVis);
-      }
-      else {
-        myMouseBehavior.reactToRoomNothing(roomVis.getRoom(),roomVis);
+      if (hoverElement != null) {
+        hoverElement.reactToUserInput(myMouseStatefulBehavior.getType(), "Hover", myMouseStatefulBehavior.getElementId());
       }
     }
   }
@@ -189,12 +192,6 @@ public class VisualizerSketch extends Application implements MouseListener, Stat
       myInteractiveElements.add(weaponVis);
     }
     return weaponVisList;
-  }
-
-  @Override
-  public void reactToNewBehavior(MouseBehavior behavior) {
-    myMouseBehavior = behavior;
-    myMouseBehavior.subscribe(this);
   }
 
   @Override

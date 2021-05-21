@@ -11,17 +11,12 @@ public interface InteractiveUIElement {
 
   public String getElementType();
 
-  public String getStateInfo();
-
-  default void reactToHover(String UIState) {
-    //does nothing by default
+  //Returns any component specific info, such as whether a weapon is powered.
+  default public String getStateInfo() {
+    return "None";
   }
 
-  default void reactToNoHover(String UIState) {
-    //does nothing by default
-  }
-
-  default void reactToStateChange(String newState, String target) {
+  default void update(double elapsedTime) {
     //does nothing by default
   }
 

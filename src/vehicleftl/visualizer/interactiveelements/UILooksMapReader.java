@@ -19,8 +19,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UILooksMapReader {
-  private static final String FILENAME = "src/vehicleftl/visualizer/interactiveelements/data/stateful_look.xml";
-  private static final String NICKNAMES_PATH = "src/vehicleftl/visualizer/interactiveelements/data/methodnicknames/";
+  private static final String FILENAME = "src/vehicleftl/visualizer/interactiveelements/data/methodful/stateful_look.xml";
+  private static final String NICKNAMES_PATH = "src/vehicleftl/visualizer/interactiveelements/data/methodful/methodnicknames/";
 
   public ReactionMap getLooksMap(InteractiveUIElement uiElement, String type) {
     ThreeKeyMap<String, String, String, Method> looksMap = new ThreeKeyMap<>();

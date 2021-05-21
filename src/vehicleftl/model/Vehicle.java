@@ -12,7 +12,7 @@ public interface Vehicle extends RoomListener {
 
   public List<Crewmate> getCrew();
 
-  public void subscribe(VehicleListener listener);
+  public void subscribeToVehicle(VehicleListener listener);
 
   public PowerSource getPowerSource();
 

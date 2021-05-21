@@ -41,6 +41,6 @@ public class MouseReaction {
     }
     return ((getElementType().equals(elementType) || getElementType().equals("Any")) &&
             getInputType().equals(inputType) &&
-            getStateInfo().equals(stateInfo));
+            (getStateInfo().equals(stateInfo) || getStateInfo().equals("")));
   }
 }

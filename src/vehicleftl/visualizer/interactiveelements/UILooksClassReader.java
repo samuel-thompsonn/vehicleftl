@@ -7,6 +7,7 @@ import org.xml.sax.SAXException;
 import vehicleftl.model.FtlVehicle;
 import vehicleftl.model.VehicleWeapon;
 import vehicleftl.model.Weapon;
+import vehicleftl.visualizer.interactiveelements.util.MultiKeyMap;
 import vehicleftl.visualizer.interactiveelements.util.ReactionClassMap;
 import vehicleftl.visualizer.interactiveelements.util.ThreeKeyMap;
 
@@ -23,12 +24,13 @@ import java.util.List;
 import java.util.Map;
 
 public class UILooksClassReader {
-  private static final String FILENAME = "src/vehicleftl/visualizer/interactiveelements/data/stateful_look_classes.xml";
-  private static final String NICKNAMES_PATH = "src/vehicleftl/visualizer/interactiveelements/data/classnicknames/";
+  private static final String FILENAME = "src/vehicleftl/visualizer/interactiveelements/data/classful/stateful_look_classes.xml";
+  private static final String NICKNAMES_PATH = "src/vehicleftl/visualizer/interactiveelements/data/classful/classnicknames/";
   private static final String CLASS_PATH = "vehicleftl.visualizer.interactiveelements.";
 
   public ReactionClassMap getLooksMap(InteractiveUIElement uiElement, String type, Object... args) {
-    ThreeKeyMap<String, String, String, InterfaceLook> looksMap = new ThreeKeyMap<>();
+//    ThreeKeyMap<String, String, String, InterfaceLook> looksMap = new ThreeKeyMap<>();
+    MultiKeyMap<String, InterfaceLook> looksMap = new MultiKeyMap<>();
     DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
     try {
       DocumentBuilder db = dbf.newDocumentBuilder();
@@ -44,11 +46,13 @@ public class UILooksClassReader {
         String input = reaction.getAttribute("action");
         String targeted = reaction.getAttribute("targeted");
         if (targeted.equals("")) { targeted = "Any"; }
+        String extraInfo = reaction.getAttribute("extra");
+        if (extraInfo.equals("")) { extraInfo = "Any"; }
         String result = reaction.getAttribute("look");
         Class look = Class.forName(CLASS_PATH.concat(nicknameMap.get(result)));
         Object[] newArgs = appendExtraArg(argsMap.get(result),args);
         InterfaceLook lookObject = (InterfaceLook)look.getConstructors()[0].newInstance(newArgs);
-        looksMap.put(state, input, targeted, lookObject);
+        looksMap.put(lookObject, state, input, targeted, extraInfo);
       }
     } catch (ParserConfigurationException | SAXException | IOException | ClassNotFoundException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
       e.printStackTrace();

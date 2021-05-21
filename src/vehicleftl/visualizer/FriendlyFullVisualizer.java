@@ -4,8 +4,8 @@ import javafx.scene.Group;
 import vehicleftl.model.Crewmate;
 import vehicleftl.model.Vehicle;
 import vehicleftl.model.Weapon;
-import vehicleftl.visualizer.interactiveelements.CrewVisualizer;
-import vehicleftl.visualizer.interactiveelements.VehicleCrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.crewvisualizer.CrewVisualizer;
+import vehicleftl.visualizer.interactiveelements.crewvisualizer.VehicleCrewVisualizer;
 import vehicleftl.visualizer.interactiveelements.weaponvisualizer.VehicleWeaponInterface;
 import vehicleftl.visualizer.interactiveelements.weaponvisualizer.WeaponInterfaceVisualizer;
 
@@ -16,7 +16,6 @@ public class FriendlyFullVisualizer {
   private SystemsTray mySystemsTray;
   private List<WeaponInterfaceVisualizer> myWeaponVisualizers;
   private Group myGroup;
-  private MouseBehavior myMouseBehavior;
 
   public FriendlyFullVisualizer(Vehicle vehicle, double x, double y) {
     myGroup = new Group();

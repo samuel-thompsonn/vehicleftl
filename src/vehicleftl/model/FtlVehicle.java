@@ -16,6 +16,8 @@ public class FtlVehicle implements Vehicle, PowerSource, PathModel {
   private int myShieldLevel;
   private double myCurrentShield;
   private double myShieldRecharge;
+  private int myMaxHull;
+  private int myHullPoints;
   private List<Room> myRooms;
   private List<VehicleListener> myListeners;
   private List<PowerSourceListener> myReactorListeners;
@@ -27,6 +29,8 @@ public class FtlVehicle implements Vehicle, PowerSource, PathModel {
   private PathModel myPathModel;
 
   public FtlVehicle() {
+    myMaxHull = 10;
+    myHullPoints = 10;
     myListeners = new ArrayList();
     myReactorListeners = new ArrayList<>();
     myShieldRecharge = 1;
@@ -132,9 +136,10 @@ public class FtlVehicle implements Vehicle, PowerSource, PathModel {
   }
 
   @Override
-  public void subscribe(VehicleListener listener) {
+  public void subscribeToVehicle(VehicleListener listener) {
     myListeners.add(listener);
     listener.reactToShieldChange(myCurrentShield,myShieldLevel);
+    listener.reactToHullPointChange(myHullPoints, myMaxHull);
   }
 
   @Override
@@ -157,6 +162,10 @@ public class FtlVehicle implements Vehicle, PowerSource, PathModel {
     }
     if (attackBlocked) {
       System.out.println("Blocked an attack of " + damage + " damage.");
+    }
+    else {
+      myHullPoints -= damage;
+      myListeners.forEach(listener -> listener.reactToHullPointChange(myHullPoints, myMaxHull));
     }
     return attackBlocked;
   }

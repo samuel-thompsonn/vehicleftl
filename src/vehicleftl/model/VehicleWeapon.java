@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class VehicleWeapon implements Weapon {
+  public static final double CHARGE_PER_SECOND = 0.75;
+  public static final double CHARGE_DECAY_FACTOR = 3.0;
   private PowerSource mySource;
   private int myLevel;
   private int myDamage;
@@ -35,10 +37,10 @@ public class VehicleWeapon implements Weapon {
   @Override
   public void update(double elapsedTime) {
     if (!isPowered) {
-      setCharge(0);
+      setCharge(Math.max(myCurrentCharge - (CHARGE_DECAY_FACTOR *CHARGE_PER_SECOND*elapsedTime), 0));
       return;
     }
-    setCharge(Math.min(myCurrentCharge + elapsedTime, myChargeTime));
+    setCharge(Math.min(myCurrentCharge + (CHARGE_PER_SECOND *elapsedTime), myChargeTime));
     if (myCurrentCharge >= myChargeTime && myTarget != null) {
       setCharge(0);
       myTarget.hitWithWeapon(myDamage);

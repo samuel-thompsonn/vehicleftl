@@ -6,7 +6,8 @@ import vehicleftl.visualizer.interactiveelements.util.ReactionClassMap;
 public abstract class ReactionClassedElement implements InteractiveUIElement {
 
   private final ReactionClassMap myReactions;
-  private Group myGroup;
+  private final Group myGroup;
+  private InterfaceLook myCurrentLook;
 
   public ReactionClassedElement(Object... args) {
     myReactions = new UILooksClassReader().getLooksMap(this, getElementType(), args);
@@ -19,10 +20,16 @@ public abstract class ReactionClassedElement implements InteractiveUIElement {
   }
 
   @Override
+  public void update(double elapsedTime) {
+    if (myCurrentLook == null) { return; }
+    myCurrentLook.update(elapsedTime);
+  }
+
+  @Override
   public void reactToUserInput(String UIState, String inputType, String UITarget) {
     String targeted = (getID().equals(UITarget))? "True" : "False";
-    InterfaceLook reaction = myReactions.get(UIState, inputType, targeted);
+    myCurrentLook = myReactions.get(UIState, inputType, targeted, getStateInfo());
     myGroup.getChildren().clear();
-    myGroup.getChildren().add(reaction.getGroup());
+    myGroup.getChildren().add(myCurrentLook.getGroup());
   }
 }

@@ -4,7 +4,7 @@ import vehicleftl.model.Room;
 import vehicleftl.model.Weapon;
 import vehicleftl.model.WeaponListener;
 import vehicleftl.visualizer.interactiveelements.*;
-import vehicleftl.visualizer.interactiveelements.util.ReactionClassMap;
+import vehicleftl.visualizer.interactiveelements.roomvisualizer.RoomVisualizer;
 
 public class VehicleWeaponInterface extends ReactionClassedElement implements WeaponInterfaceVisualizer, WeaponListener {
 
@@ -19,15 +19,9 @@ public class VehicleWeaponInterface extends ReactionClassedElement implements We
   private double myWidth;
   private double myHeight;
   private Weapon myWeapon;
-  private RoomVisualizer myTargetVis;
-  private boolean isPowered;
-  private StandardWeaponLook myLook;
-  private ReactionClassMap myReactions;
 
   public VehicleWeaponInterface(Weapon weapon, double x, double y) {
     super(weapon, x, y);
-    myLook = new InactiveWeaponLook(weapon, x, y);
-    myTargetVis = null;
     myX = x;
     myY = y;
     myWidth = DISPLAY_WIDTH;
@@ -48,11 +42,6 @@ public class VehicleWeaponInterface extends ReactionClassedElement implements We
   }
 
   @Override
-  public void setSelected(boolean selected) {
-    //do nothing since it's handled by my components
-  }
-
-  @Override
   public String getWeaponId() {
     return myWeapon.getID();
   }
@@ -64,7 +53,7 @@ public class VehicleWeaponInterface extends ReactionClassedElement implements We
 
   @Override
   public String getStateInfo() {
-    return (isPowered)? "Powered" : "Unpowered";
+    return (myWeapon.isPowered())? "Powered" : "Unpowered";
   }
 
   @Override
@@ -74,7 +63,7 @@ public class VehicleWeaponInterface extends ReactionClassedElement implements We
 
   @Override
   public void reactToPowerChange(int newPower, int maxPower) {
-    isPowered = newPower == maxPower;
+    //handled by component
   }
 
   @Override

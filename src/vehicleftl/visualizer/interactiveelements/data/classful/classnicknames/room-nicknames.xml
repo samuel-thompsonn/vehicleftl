@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nicknames>
+    <Nickname class="roomvisualizer.ColoredRoomLook" alias="HighlightCommand">
+        <Param label="r" value="0.7"/>
+        <Param label="g" value="0.5"/>
+        <Param label="b" value="0.0"/>
+        <Param label="opacity" value="0.5"/>
+    </Nickname>
+    <Nickname class="roomvisualizer.ColoredRoomLook" alias="Normal">
+        <Param label="r" value="1.0"/>
+        <Param label="g" value="1.0"/>
+        <Param label="b" value="1.0"/>
+    </Nickname>
+    <Nickname class="roomvisualizer.ColoredRoomLook" alias="HighlightTarget">
+        <Param label="r" value="1.0"/>
+        <Param label="g" value="0.0"/>
+        <Param label="b" value="0.0"/>
+    </Nickname>
+</Nicknames>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Nicknames>
+    <Nickname class="weaponvisualizer.ColoredWeaponLook" alias="InactiveNoHighlight">
+        <Param label="r" value="0.25"/>
+        <Param label="g" value="0.25"/>
+        <Param label="b" value="0.25"/>
+    </Nickname>
+    <Nickname class="weaponvisualizer.ColoredWeaponLook" alias="InactiveHighlight">
+        <Param label="r" value="0.5"/>
+        <Param label="g" value="0.5"/>
+        <Param label="b" value="0.5"/>
+    </Nickname>
+    <Nickname class="weaponvisualizer.FlashingWeaponLook" alias="ActiveNoHighlight">
+        <Param label="period" value="2"/>
+        <Param label="r" value="0.0"/>
+        <Param label="g" value="0.5"/>
+        <Param label="b" value="0.0"/>
+    </Nickname>
+    <Nickname class="weaponvisualizer.ColoredWeaponLook" alias="ActiveHighlight">
+        <Param label="period" value="2"/>
+        <Param label="r" value="0.0"/>
+        <Param label="g" value="0.25"/>
+        <Param label="b" value="0.0"/>
+    </Nickname>
+</Nicknames>

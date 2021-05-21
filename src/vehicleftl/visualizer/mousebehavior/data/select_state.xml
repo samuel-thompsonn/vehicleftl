@@ -6,8 +6,16 @@
             <Result state="Target"/>
         </Reaction>
         <Reaction>
+            <Input element="WeaponPanel" input="Primary" state="Powered"/>
+            <Result action="DecreaseWeaponPower"/>
+        </Reaction>
+        <Reaction>
             <Input element="WeaponPanel" input="Secondary" state="Unpowered"/>
             <Result action="IncreaseWeaponPower"/>
+        </Reaction>
+        <Reaction>
+            <Input element="Crew" input="Secondary"/>
+            <Result state="Command"/>
         </Reaction>
     </UIState>
     <UIState name="Target">
@@ -24,6 +32,14 @@
         <Reaction>
             <Input element="Room" input="Primary"/>
             <Result action="AssignCrewmateToRoom"/>
+        </Reaction>
+        <Reaction>
+            <Input element="Crew" input="Secondary"/>
+            <Result state="Command"/>
+        </Reaction>
+        <Reaction>
+            <Input element="Any" input="Secondary"/>
+            <Result state="Select"/>
         </Reaction>
         <Reaction>
             <Input element="Any" input="Primary"/>
